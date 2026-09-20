@@ -6,6 +6,52 @@ The application places learners inside a cozy virtual house where technology-rel
 
 > Tuki is currently under active development.
 
+## Development setup
+
+Tuki currently keeps its Expo application at the repository root while Phase 0
+establishes the workspace boundary. Shared packages will live in `packages/` as
+they are introduced; the mobile app will move to `apps/mobile` only when that
+move can be made and verified as a dedicated change.
+
+### Prerequisites
+
+- Node.js 22.13.0 or later
+- npm 11 or later
+
+The project uses Expo SDK 57. Install dependencies and start the development
+server from the repository root:
+
+```sh
+npm install
+npm run start
+```
+
+Use `npx expo install <package>` for Expo and React Native dependencies so the
+installed version remains compatible with SDK 57.
+
+Before opening a pull request, run the complete local quality gate:
+
+```sh
+npm run check
+```
+
+For faster iteration, run individual checks with `npm run format:check`,
+`npm run typecheck`, `npm run lint`, `npm run test`, or `npm run build:smoke`.
+
+### Repository layout
+
+```text
+tuki/
+  src/                 # Transitional location of the Expo mobile app
+  packages/            # Shared workspaces, introduced incrementally
+  content/             # Reviewed content packs and source assets
+  docs/                # Plans, ADRs, spikes, and research notes
+  .github/workflows/   # Continuous-integration workflows
+```
+
+See [the repository-layout note](docs/repository-layout.md) for the planned
+destination structure and the migration rule.
+
 ---
 
 ## Overview
